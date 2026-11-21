@@ -206,6 +206,9 @@ cartList.addEventListener('click', (e) => {
 
 document.querySelectorAll('.add-to-cart-btn').forEach((btn) => {
   btn.addEventListener('click', () => {
+    if (orderPlaced) {
+      resetCheckoutForNewOrder();
+    }
     const productId = btn.dataset.product;
     const name      = btn.dataset.name;
     const price     = parseInt(btn.dataset.price, 10);
@@ -294,6 +297,21 @@ function confirmOrder(customerName, total) {
   // Clear cart for a clean post-order state
   cart = {};
   renderCart();
+}
+
+function resetCheckoutForNewOrder() {
+  orderPlaced = false;
+  isSubmitting = false;
+  placeOrderBtn.disabled = false;
+  orderConfirm.hidden = true;
+  checkoutForm.hidden = false;
+  customerInput.value = '';
+  hideValidation();
+}
+
+const orderAgainBtn = document.getElementById('order-again-btn');
+if (orderAgainBtn) {
+  orderAgainBtn.addEventListener('click', resetCheckoutForNewOrder);
 }
 
 // ──────────────────────────────────────────────────────────
