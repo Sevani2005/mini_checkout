@@ -33,13 +33,19 @@ let orderPlaced = false;
 const cartEmpty      = document.getElementById('cart-empty');
 const cartList       = document.getElementById('cart-list');
 const cartSummary    = document.getElementById('cart-summary');
+const cartSubtotalEl = document.getElementById('cart-subtotal');
 const orderTotalEl   = document.getElementById('order-total');
 const validationMsg  = document.getElementById('validation-message');
 const orderConfirm   = document.getElementById('order-confirmation');
 const checkoutForm   = document.getElementById('checkout-form');
 const customerInput  = document.getElementById('customer-name');
+const phoneInput     = document.getElementById('customer-phone');
+const addressInput   = document.getElementById('customer-address');
+const cityInput      = document.getElementById('customer-city');
+const pincodeInput   = document.getElementById('customer-pincode');
 const placeOrderBtn  = document.getElementById('place-order-btn');
 const confirmName    = document.getElementById('confirmation-name');
+const confirmAddress = document.getElementById('confirmation-address');
 const confirmTotal   = document.getElementById('confirmation-total');
 const orderRefEl     = document.getElementById('order-ref');
 
@@ -170,8 +176,12 @@ function renderCart() {
     cartList.appendChild(li);
   });
 
-  // Update total
-  orderTotalEl.textContent = formatINR(getOrderTotal());
+  // Update total & subtotal
+  const total = getOrderTotal();
+  if (cartSubtotalEl) {
+    cartSubtotalEl.textContent = formatINR(total);
+  }
+  orderTotalEl.textContent = formatINR(total);
 }
 
 /** Minimal HTML escape to prevent XSS from data attributes */
@@ -286,7 +296,23 @@ function confirmOrder(customerName, total) {
   const ref = generateOrderRef();
 
   // Populate confirmation
-  confirmName.textContent  = `Name: ${customerName}`;
+  confirmName.textContent  = `Customer: ${customerName}`;
+  
+  // Format address if provided
+  const parts = [];
+  if (addressInput && addressInput.value.trim()) parts.push(addressInput.value.trim());
+  if (cityInput && cityInput.value.trim()) parts.push(cityInput.value.trim());
+  if (pincodeInput && pincodeInput.value.trim()) parts.push(pincodeInput.value.trim());
+
+  if (confirmAddress) {
+    if (parts.length > 0) {
+      confirmAddress.textContent = `Delivery: ${parts.join(', ')}`;
+      confirmAddress.hidden = false;
+    } else {
+      confirmAddress.hidden = true;
+    }
+  }
+
   confirmTotal.textContent = `Order Total: ${formatINR(total)}`;
   orderRefEl.textContent   = ref;
 
@@ -306,6 +332,10 @@ function resetCheckoutForNewOrder() {
   orderConfirm.hidden = true;
   checkoutForm.hidden = false;
   customerInput.value = '';
+  if (phoneInput) phoneInput.value = '';
+  if (addressInput) addressInput.value = '';
+  if (cityInput) cityInput.value = '';
+  if (pincodeInput) pincodeInput.value = '';
   hideValidation();
 }
 

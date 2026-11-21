@@ -92,8 +92,16 @@
         <!-- Cart items list -->
         <ul class="cart-list" id="cart-list" data-testid="cart-list" aria-label="Cart items" hidden></ul>
 
-        <!-- Cart totals -->
+        <!-- Cart totals / Order Summary -->
         <div class="cart-summary" id="cart-summary" hidden>
+          <div class="summary-row">
+            <span>Subtotal</span>
+            <span id="cart-subtotal">₹0</span>
+          </div>
+          <div class="summary-row">
+            <span>Standard Shipping</span>
+            <span class="badge-free">FREE</span>
+          </div>
           <div class="summary-row summary-total">
             <span>Order Total</span>
             <span class="total-amount" id="order-total" data-testid="order-total">₹0</span>
@@ -103,7 +111,8 @@
 
       <!-- CHECKOUT FORM -->
       <section class="checkout-section" aria-labelledby="checkout-heading" id="checkout-section">
-        <h2 id="checkout-heading" class="section-title">Checkout</h2>
+        <h2 id="checkout-heading" class="section-title">Shipping &amp; Checkout</h2>
+        <p class="section-subtitle" style="margin-bottom: 18px;">Please enter your delivery details.</p>
 
         <!-- Validation messages -->
         <div class="validation-message" id="validation-message" data-testid="validation-message" role="alert"
@@ -115,6 +124,7 @@
           <div class="confirmation-icon" aria-hidden="true">✓</div>
           <h3 class="confirmation-title">Order Confirmed!</h3>
           <p class="confirmation-detail" id="confirmation-name"></p>
+          <p class="confirmation-detail" id="confirmation-address" hidden></p>
           <p class="confirmation-detail" id="confirmation-total"></p>
           <p class="confirmation-ref">
             Reference: <strong id="order-ref" data-testid="order-ref"></strong>
@@ -134,6 +144,35 @@
             <input type="text" id="customer-name" name="customer-name" class="form-input" data-testid="customer-name"
               placeholder="e.g. Priya Mehta" autocomplete="name" aria-required="true" aria-describedby="name-hint" />
             <span class="form-hint" id="name-hint">Required to complete your order.</span>
+          </div>
+
+          <div class="form-group">
+            <label for="customer-phone" class="form-label">
+              Phone Number
+            </label>
+            <input type="tel" id="customer-phone" name="customer-phone" class="form-input" data-testid="customer-phone"
+              placeholder="e.g. +91 98765 43210" autocomplete="tel" />
+          </div>
+
+          <div class="form-group">
+            <label for="customer-address" class="form-label">
+              Delivery Address
+            </label>
+            <input type="text" id="customer-address" name="customer-address" class="form-input" data-testid="customer-address"
+              placeholder="Flat/House No., Street, Landmark" autocomplete="street-address" />
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="customer-city" class="form-label">City</label>
+              <input type="text" id="customer-city" name="customer-city" class="form-input" data-testid="customer-city"
+                placeholder="e.g. Chennai" autocomplete="address-level2" />
+            </div>
+            <div class="form-group">
+              <label for="customer-pincode" class="form-label">PIN Code</label>
+              <input type="text" id="customer-pincode" name="customer-pincode" class="form-input" data-testid="customer-pincode"
+                placeholder="600001" autocomplete="postal-code" maxlength="6" />
+            </div>
           </div>
 
           <button type="submit" class="btn btn-checkout" id="place-order-btn" data-testid="place-order-btn"

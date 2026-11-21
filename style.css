@@ -632,6 +632,22 @@ button, input {
   color: var(--text-muted);
 }
 
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.badge-free {
+  background-color: #e8f5e9;
+  color: #2e7d32;
+  font-weight: bold;
+  font-size: 0.76rem;
+  letter-spacing: 0.05em;
+  padding: 3px 8px;
+  border-radius: 4px;
+}
+
 /* ── VALIDATION MESSAGE ───────────────────────────────────── */
 .validation-message {
   background: var(--error-bg);
