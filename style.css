@@ -1,32 +1,32 @@
 /* ═══════════════════════════════════════════════════════════
    LITTLE DESK — CHECKOUT STYLESHEET
-   Warm ivory · Forest green · Sage accents · Editorial feel
+   Warm ivory · Deep espresso · Sand accents · Editorial feel
 ═══════════════════════════════════════════════════════════ */
 
 /* ── TOKENS ─────────────────────────────────────────────── */
 :root {
-  --ivory:          #f8f4ee;
-  --ivory-dark:     #efe9df;
-  --ivory-mid:      #f0ead9;
-  --forest:         #2d5a3d;
-  --forest-dark:    #1e3d29;
-  --forest-light:   #3d7a52;
-  --sage:           #7a9e82;
-  --sage-light:     #a8c4ae;
-  --sage-pale:      #d4e4d8;
-  --beige:          #c8b89a;
-  --beige-dark:     #a8956e;
-  --text-primary:   #2a2420;
-  --text-secondary: #6b5e52;
-  --text-muted:     #9a8c82;
-  --border:         #d8cfc4;
-  --border-light:   #e8e0d4;
-  --error:          #c0392b;
-  --error-bg:       #fdf2f1;
+  --ivory:          #faf7f2;
+  --ivory-dark:     #f2ede4;
+  --ivory-mid:      #eae3d6;
+  --forest:         #23201d;  /* Deep Warm Espresso Charcoal */
+  --forest-dark:    #161412;
+  --forest-light:   #3d3833;
+  --sage:           #9c8774;  /* Warm Sand/Camel */
+  --sage-light:     #d8cdbf;
+  --sage-pale:      #ede5db;
+  --beige:          #cbb79f;
+  --beige-dark:     #aa947a;
+  --text-primary:   #231f1c;
+  --text-secondary: #665c54;
+  --text-muted:     #968a80;
+  --border:         #ded7cb;
+  --border-light:   #ebe5db;
+  --error:          #b83324;
+  --error-bg:       #fdf4f3;
   --success:        #2d5a3d;
-  --success-bg:     #eef5f0;
-  --shadow-sm:      0 1px 4px rgba(45, 36, 32, 0.07);
-  --shadow-md:      0 4px 16px rgba(45, 36, 32, 0.10);
+  --success-bg:     #f0f6f2;
+  --shadow-sm:      0 1px 4px rgba(35, 32, 29, 0.06);
+  --shadow-md:      0 4px 16px rgba(35, 32, 29, 0.09);
   --radius:         10px;
   --radius-sm:      6px;
   --transition:     0.18s ease;
