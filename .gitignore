@@ -1,0 +1,4 @@
+node_modules/
+.last-run.json
+mini_checkout.zip
+playwright-report/
